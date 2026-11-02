@@ -18,3 +18,4 @@
 | 14 | 2026-11-02 | H2 pre-trends (EDA) | Pre-crisis slopes of real carbon intensity differ by exposure (p = 0.04) | H2 models add firm-specific linear trends and Rambachan-Roth sensitivity; discussed in Limitations |
 | 15 | 2026-11-02 | H1 specification | Size (ln assets) may respond to the shock (bad control) | Main H1 model without controls; size control reported as robustness |
 | 16 | 2026-11-02 | H2 pre-trends | Real revenue fails joint pre-trend test (p < 0.001): low-exposure firms grew faster already before 2019 | Report baseline and detrended (firm-specific 2016-2019 linear trends) DiD side by side; simplified relative-magnitude bounds; interpret H2 with caution |
+| 17 | 2026-11-02 | Sensitivity analysis | Simplified bounds are an approximation | Official R HonestDiD (relative magnitudes and smoothness); anticipation allowed: ref. 2019, pre 2016-2018, target = mean effect 2022-2024 |
