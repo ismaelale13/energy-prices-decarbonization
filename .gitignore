@@ -218,3 +218,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Thesis: licensed / generated data (do NOT commit) ---
+data/raw/lseg/
+data/processed/
+.env
