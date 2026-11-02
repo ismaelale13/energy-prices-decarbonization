@@ -24,6 +24,8 @@ for v in VARS:
 st = pd.read_csv(f"{RAW}/raw_static.csv").rename(columns={
     "Instrument":"ric","Company Common Name":"name","Country of Headquarters":"country",
     "TRBC Industry Name":"trbc_industry","NACE Classification":"nace_label"})
+# static file can list a RIC twice (one row empty): keep the most complete row per firm
+st = st.assign(_n=st.notna().sum(axis=1)).sort_values("_n", ascending=False).drop_duplicates("ric").drop(columns="_n")
 st["nace4"] = st["nace_label"].astype(str).str.extract(r"\((\d{2}\.\d{1,2})\)\s*$")[0]
 st["nace2"] = st["nace4"].str[:2]
 panel = panel.merge(st[["ric","name","ISIN","country","trbc_industry","nace_label","nace4","nace2"]], on="ric", how="left")
@@ -38,7 +40,8 @@ panel["ln_ci"] = np.log(panel["carbon_intensity"])
 panel["energy_intensity"] = np.where((panel.energy_use_total > 0) & (panel.revenue > 0),
                                      panel.energy_use_total / panel.revenue * 1e6, np.nan)
 
-pre = panel[panel.fyear.between(2016, 2021)]
+# exposure = mean energy intensity 2016-2019 (excludes COVID years 2020-21, when collapsed revenue inflated energy intensity)
+pre = panel[panel.fyear.between(2016, 2019)]
 exposure = pre.groupby("ric")["energy_intensity"].mean().rename("exposure")
 panel = panel.merge(exposure, on="ric", how="left")
 med = panel.drop_duplicates("ric")["exposure"].median()
@@ -60,7 +63,7 @@ yrs_c = s_c.groupby("ric").fyear.nunique(); s_e = s_c[s_c.ric.isin(yrs_c[yrs_c =
 lines = [
  f"Constituents (31.12.2021): {panel.ric.nunique()}",
  f"A  carbon intensity in >=1 pre and >=1 post year: {n_firms(s_a)} firms, {len(s_a)} obs",
- f"B  A + energy exposure (2016-2021): {n_firms(s_b)} firms",
+ f"B  A + energy exposure (2016-2019): {n_firms(s_b)} firms",
  f"B' B without banks/insurers (NACE 64-66): {n_firms(s_b_nf)} firms, {len(s_b_nf)} obs  <- MAIN SAMPLE",
  f"C  B' with reported emissions only: {n_firms(s_c)} firms, {len(s_c)} obs",
  f"D  B' balanced 2016-2024: {n_firms(s_d)} firms",
