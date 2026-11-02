@@ -17,3 +17,4 @@
 | 13 | 2026-11-02 | Treatment and COVID | Exposure averaged over 2016-2021 inflated by collapsed 2020-21 revenue (airlines, hotels, tour operators) | Exposure = mean energy intensity 2016-2019 |
 | 14 | 2026-11-02 | H2 pre-trends (EDA) | Pre-crisis slopes of real carbon intensity differ by exposure (p = 0.04) | H2 models add firm-specific linear trends and Rambachan-Roth sensitivity; discussed in Limitations |
 | 15 | 2026-11-02 | H1 specification | Size (ln assets) may respond to the shock (bad control) | Main H1 model without controls; size control reported as robustness |
+| 16 | 2026-11-02 | H2 pre-trends | Real revenue fails joint pre-trend test (p < 0.001): low-exposure firms grew faster already before 2019 | Report baseline and detrended (firm-specific 2016-2019 linear trends) DiD side by side; simplified relative-magnitude bounds; interpret H2 with caution |
