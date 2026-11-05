@@ -1,7 +1,8 @@
 """Build firm-year panel from LSEG raw files and report sample sizes."""
-import sys, re
+import os, sys, re
 import numpy as np, pandas as pd
 RAW, OUT = (sys.argv[1], sys.argv[2]) if len(sys.argv) > 2 else ("data/raw/lseg", "data/processed")
+os.makedirs(OUT, exist_ok=True)
 VARS = ["scope1","scope2","scope12_total","scope12_marketbased","co2_estimation_method",
         "energy_use_total","energy_purchased","revenue","total_assets"]
 

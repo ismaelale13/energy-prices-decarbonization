@@ -7,6 +7,7 @@ Run from the repository root with LSEG Workspace open:
 Output: data/raw/lseg/raw_*.csv  (NOT committed: LSEG licence forbids redistribution)
 """
 import time, warnings
+import getpass
 from pathlib import Path
 import pandas as pd
 import lseg.data as ld
@@ -36,7 +37,7 @@ def chunks(lst, n):
 
 
 def main():
-    ld.open_session(app_key=input("LSEG App Key: ").strip())
+    ld.open_session(app_key=getpass.getpass("LSEG App Key (hidden): ").strip())
     cons = ld.get_data(universe="0#.STOXX(2021-12-31)", fields=["TR.RIC"])
     rics = cons.iloc[:, 0].dropna().astype(str).unique().tolist()
     print(f"Firms: {len(rics)}")
