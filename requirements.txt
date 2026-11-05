@@ -1,8 +1,11 @@
-pandas>=2.2
-numpy>=1.26
-eurostat>=1.1
-lseg-data>=2.0
-pyfixest>=0.25
-matplotlib>=3.8
-scipy>=1.11
-jupyter
+# Exact versions used for the thesis results (tested with Python 3.14.0)
+pandas==2.3.3
+numpy==2.5.4
+scipy==1.18.1
+pyfixest==0.60.0
+matplotlib==3.11.2
+eurostat==1.1.1
+lseg-data==2.1.1
+jupyter==1.1.1
+nbconvert==7.17.2
+ipykernel==7.4.0
