@@ -19,3 +19,5 @@
 | 15 | 2026-11-02 | H1 specification | Size (ln assets) may respond to the shock (bad control) | Main H1 model without controls; size control reported as robustness |
 | 16 | 2026-11-02 | H2 pre-trends | Real revenue fails joint pre-trend test (p < 0.001): low-exposure firms grew faster already before 2019 | Report baseline and detrended (firm-specific 2016-2019 linear trends) DiD side by side; simplified relative-magnitude bounds; interpret H2 with caution |
 | 17 | 2026-11-02 | Sensitivity analysis | Simplified bounds are an approximation | Official R HonestDiD (relative magnitudes and smoothness); anticipation allowed: ref. 2019, pre 2016-2018, target = mean effect 2022-2024 |
+| 18 | 2026-11-07 | Energy companies | Power/gas utilities (NACE 35) and refineries (NACE 19) can change emissions for other reasons (e.g. gas-to-coal switching) | Robustness check without NACE 35 and 19 (check 10) |
+| 19 | 2026-11-07 | H2 precision | Median split discards information; H2 estimates imprecise | Additional H2 check with continuous exposure (baseline, firm trends, sector x year FE); reported as supplementary evidence, main model unchanged |
